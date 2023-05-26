@@ -13,7 +13,6 @@
             user-select: none;
             background-color: #808080;
             color: #808080;
-           
         }
         .shownElement{
             color: white !important;
@@ -24,6 +23,9 @@
         .container{
             grid-template-columns: auto auto auto;
         }
+
+
+
     </style>
 </head>
 <body>
@@ -39,6 +41,7 @@
    
 </body>
 <script>
+   
     var div
     let guessList = []
     let correctList = []
@@ -53,7 +56,7 @@
     let over = document.querySelector('.over')
  
     function restart(){
-        let input = document.querySelector('.gameSize').value = 0
+       document.querySelector('.gameSize').value = 0
        
     }
     function init(){
@@ -62,6 +65,7 @@
     }
   
     function startGame(){
+    
         let userInput = document.querySelector('.gameSize').value
         for(let i = 0; i < userInput; i++){
             gameSize.push(colors[i])
@@ -126,7 +130,7 @@
           }
           //Ha annyit talalt el amennyi kell a nyereshez, akkor kiirjuk, hogy nyert
           if(correct == duplColor.length){
-              over.innerHTML = `You won! <br> Tries: ${tries + 1}`
+              over.innerHTML = `You won! <br> Tries: ${tries}`
           }
       }
     }
