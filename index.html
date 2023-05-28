@@ -20,12 +20,7 @@
         .correct{
             color: rgb(90, 231, 90) !important;
         }
-        .container{
-            grid-template-columns: auto auto auto;
-        }
-
-
-
+       
     </style>
 </head>
 <body>
@@ -35,13 +30,13 @@
             <div onclick="init(); restart()" class="flex justify-center bg-sky-700 w-fit m-auto p-2 text-white rounded-md shadow-md hover:bg-sky-800 transition-all cursor-pointer">New game</div>
         </div>
       
-        <div class="container place-items-center grid md:grid-cols-6 lg:grid-cols-4 sm:grid-cols-6 grid-cols-4 w-full lg:w-1/3 xl:w-1/3 gap-3 py-8  m-auto"></div>
+        <div class="container place-items-center grid md:grid-cols-6 lg:grid-cols-4 sm:grid-cols-6 grid-cols-4 w-full lg:w-1/3 xl:w-1/3 gap-3 py-8 m-auto"></div>
         <div class="over text-center text-xl text-white font-mono pb-6"></div>
     </div>
    
 </body>
 <script>
-   
+
     var div
     let guessList = []
     let correctList = []
@@ -59,13 +54,13 @@
        document.querySelector('.gameSize').value = 0
        
     }
+
     function init(){
         gameSize = []
         startGame()
     }
   
     function startGame(){
-    
         let userInput = document.querySelector('.gameSize').value
         for(let i = 0; i < userInput; i++){
             gameSize.push(colors[i])
@@ -80,7 +75,7 @@
         isTwo = false
         over.innerHTML = ""
         container.innerHTML = ""
-       
+        
         for(let j of duplColor){
         div = document.createElement('div')
         div.innerHTML = j
@@ -118,15 +113,15 @@
           }
           //Megnezzuk, hogy kattinott e meg egyet, ha igen, akkor eltuntetjuk amikre eddig kattintott es a probalkozasokhoz hozza adunk egyet
           }if(isTwo){
-              tries++
+            if(!(correctList.length / 2 == duplColor.length + 1)){
+                tries++
+            }
               setTimeout(() => {
                 guessList.forEach((element) => {
               element.classList.remove('shownElement');
               guessList = []
               })
               }, 500)
-            
-              
           }
           //Ha annyit talalt el amennyi kell a nyereshez, akkor kiirjuk, hogy nyert
           if(correct == duplColor.length){
