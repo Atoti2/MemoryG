@@ -26,8 +26,9 @@
 <body>
     <div class="bg-slate-500 shadow-lg min-h-screen">
         <div class="pt-5 text-center">
-            <input class="gameSize mb-3 p-1 rounded-md shadow-md" type="text" name="size" id="size" placeholder="Játék mérete (max 11)">
-            <div onclick="init(); restart()" class="flex justify-center bg-sky-700 w-fit m-auto p-2 text-white rounded-md shadow-md hover:bg-sky-800 transition-all cursor-pointer">New game</div>
+            <input onchange="showRange(this.value)" class="gameSize" type="range" min="2" max="11" step="1">
+            <p class="ran text-white text-xl mb-2"></p>
+            <div onclick="init()" class="flex justify-center bg-sky-700 w-fit m-auto p-2 text-white rounded-md shadow-md hover:bg-sky-800 transition-all cursor-pointer">New game</div>
         </div>
       
         <div class="container place-items-center grid md:grid-cols-6 lg:grid-cols-4 sm:grid-cols-6 grid-cols-4 w-full lg:w-1/3 xl:w-1/3 gap-3 py-8 m-auto"></div>
@@ -44,16 +45,19 @@
     let tries = 0
     let isTwo = false
     let gameSize = []
+
     const colors = ["Red", "Green", "Blue", "Yellow", "Orange", "Black", "Purple", "Pink", "White", "Brown", "Violet"]
+    
     let duplColor
-    let userInput = document.querySelector('.gameSize').value = 0
     let container = document.querySelector('.container')
     let over = document.querySelector('.over')
- 
-    function restart(){
-       document.querySelector('.gameSize').value = 0
-       
+    let range = document.querySelector('.gameSize').value = 2
+
+    console.log(range)
+    function showRange(val){
+        document.querySelector('.ran').innerHTML = val
     }
+
 
     function init(){
         gameSize = []
