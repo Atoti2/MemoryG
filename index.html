@@ -79,7 +79,7 @@
         isTwo = false
         over.innerHTML = ""
         container.innerHTML = ""
-        
+        console.log(duplColor.length)
         for(let j of duplColor){
         div = document.createElement('div')
         div.innerHTML = j
@@ -104,8 +104,6 @@
               }
               if(guessList[0].innerHTML == guessList[1].innerHTML){
                   correctList.push(guessList[0], guessList[1])
-                 
-              correct ++
               }
        
               correctList.forEach((element) => {
@@ -115,6 +113,8 @@
           if(guessList.length == 2){
             isTwo = true
           }
+          
+        
           //Megnezzuk, hogy kattinott e meg egyet, ha igen, akkor eltuntetjuk amikre eddig kattintott es a probalkozasokhoz hozza adunk egyet
           }if(isTwo){
             if(!(correctList.length / 2 == duplColor.length + 1)){
@@ -127,8 +127,10 @@
               })
               }, 500)
           }
+          var win = [...new Set(correctList)]
+         
           //Ha annyit talalt el amennyi kell a nyereshez, akkor kiirjuk, hogy nyert
-          if(correct == duplColor.length){
+          if(win.length == duplColor.length){
               over.innerHTML = `You won! <br> Tries: ${tries}`
           }
       }
