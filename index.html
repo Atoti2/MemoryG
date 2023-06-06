@@ -27,7 +27,7 @@
     <div class="bg-slate-500 shadow-lg min-h-screen">
         <div class="pt-5 text-center">
             <input onchange="showRange(this.value)" class="gameSize" type="range" min="2" max="11" step="1">
-            <p class="ran text-white text-xl mb-2"></p>
+            <p class="ran text-white text-xl mb-2">2</p>
             <div onclick="init()" class="flex justify-center bg-sky-700 w-fit m-auto p-2 text-white rounded-md shadow-md hover:bg-sky-800 transition-all cursor-pointer">New game</div>
         </div>
       
@@ -79,7 +79,7 @@
         isTwo = false
         over.innerHTML = ""
         container.innerHTML = ""
-        console.log(duplColor.length)
+  
         for(let j of duplColor){
         div = document.createElement('div')
         div.innerHTML = j
@@ -130,7 +130,7 @@
           var win = [...new Set(correctList)]
          
           //Ha annyit talalt el amennyi kell a nyereshez, akkor kiirjuk, hogy nyert
-          if(win.length == duplColor.length){
+          if(win.length/2 == duplColor.length){
               over.innerHTML = `You won! <br> Tries: ${tries}`
           }
       }
